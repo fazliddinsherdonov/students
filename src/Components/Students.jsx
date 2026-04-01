@@ -44,7 +44,15 @@ export default function Students() {
         localStorage.setItem("students_data", JSON.stringify(students));
     }, [students]);
 
-    const filtered = students.filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
+    // Qidiruv mantig'i: ism, gmail yoki guruhdan qidiradi
+    const filtered = students.filter((s) => {
+        const searchLower = search.toLowerCase();
+        return (
+            s.name.toLowerCase().includes(searchLower) ||
+            (s.gmail && s.gmail.toLowerCase().includes(searchLower)) ||
+            s.group.toLowerCase().includes(searchLower)
+        );
+    });
 
     const openModal = (item = null) => {
         if (item) { setForm(item); setEditId(item.id); }
@@ -79,7 +87,11 @@ export default function Students() {
 
             <div className="search-bar">
                 <SearchIcon />
-                <input placeholder="Qidiruv..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                <input
+                    placeholder="Ism, email yoki guruh bo'yicha qidiruv..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
             </div>
 
             <div className="table-wrap">
