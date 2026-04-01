@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// Ikonkalar (SVG)
 const PlusIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
         <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
@@ -33,8 +34,11 @@ const getInitials = (name) => name ? name.split(" ").map((w) => w[0]).join("").t
 export default function Students() {
     const [students, setStudents] = useState(() => {
         const saved = localStorage.getItem("students_data");
-        return saved ? JSON.parse(saved) : [{ id: 1, name: "Asilbek Jumaev", gmail: "asilbek@gmail.com", group: "N45", active: true }];
+        return saved ? JSON.parse(saved) : [
+            { id: 1, name: "Asilbek Jumaev", gmail: "asilbek@gmail.com", group: "N45", active: true }
+        ];
     });
+
     const [search, setSearch] = useState("");
     const [modal, setModal] = useState(false);
     const [form, setForm] = useState({ name: "", gmail: "", group: "", active: true });
@@ -44,19 +48,24 @@ export default function Students() {
         localStorage.setItem("students_data", JSON.stringify(students));
     }, [students]);
 
-    // Qidiruv mantig'i: ism, gmail yoki guruhdan qidiradi
+    // Qidiruv mantig'i: Ism, Gmail yoki Guruh bo'yicha
     const filtered = students.filter((s) => {
-        const searchLower = search.toLowerCase();
+        const query = search.toLowerCase();
         return (
-            s.name.toLowerCase().includes(searchLower) ||
-            (s.gmail && s.gmail.toLowerCase().includes(searchLower)) ||
-            s.group.toLowerCase().includes(searchLower)
+            s.name.toLowerCase().includes(query) ||
+            (s.gmail && s.gmail.toLowerCase().includes(query)) ||
+            s.group.toLowerCase().includes(query)
         );
     });
 
     const openModal = (item = null) => {
-        if (item) { setForm(item); setEditId(item.id); }
-        else { setForm({ name: "", gmail: "", group: "", active: true }); setEditId(null); }
+        if (item) {
+            setForm(item);
+            setEditId(item.id);
+        } else {
+            setForm({ name: "", gmail: "", group: "", active: true });
+            setEditId(null);
+        }
         setModal(true);
     };
 
@@ -87,10 +96,10 @@ export default function Students() {
 
             <div className="search-bar">
                 <SearchIcon />
-                <input
-                    placeholder="Ism, email yoki guruh bo'yicha qidiruv..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                <input 
+                    placeholder="Ism, email yoki guruhdan qidirish..." 
+                    value={search} 
+                    onChange={(e) => setSearch(e.target.value)} 
                 />
             </div>
 
@@ -104,7 +113,7 @@ export default function Students() {
                 </div>
 
                 {filtered.length === 0 ? (
-                    <div className="empty">Hech qanday o'quvchi topilmadi</div>
+                    <div className="empty">Ma'lumot topilmadi</div>
                 ) : (
                     filtered.map((s) => (
                         <div className="table-row" key={s.id}>
@@ -112,10 +121,14 @@ export default function Students() {
                                 <div className="avatar">{getInitials(s.name)}</div>
                                 <span className="name-text">{s.name}</span>
                             </div>
-                            <span className="gmail-cell">{s.gmail || "—"}</span>
-                            <div className="group-cell"><span className="badge">{s.group}</span></div>
+                            <div className="gmail-cell">
+                                <span className="cell-text">{s.gmail || "—"}</span>
+                            </div>
+                            <div className="group-cell">
+                                <span className="badge">{s.group}</span>
+                            </div>
                             <div className="active-cell">
-                                <span
+                                <span 
                                     className={`status-dot ${s.active ? "active" : "inactive"}`}
                                     onClick={() => toggleActive(s.id)}
                                 >
@@ -140,15 +153,23 @@ export default function Students() {
                         </div>
                         <div className="field">
                             <label>Ism</label>
-                            <input placeholder="To'liq ism" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                            <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                         </div>
                         <div className="field">
                             <label>Gmail</label>
-                            <input placeholder="email@gmail.com" value={form.gmail} onChange={(e) => setForm({ ...form, gmail: e.target.value })} />
+                            <input value={form.gmail} onChange={(e) => setForm({ ...form, gmail: e.target.value })} />
                         </div>
                         <div className="field">
                             <label>Guruh</label>
-                            <input placeholder="Masalan: N45" value={form.group} onChange={(e) => setForm({ ...form, group: e.target.value })} />
+                            <input value={form.group} onChange={(e) => setForm({ ...form, group: e.target.value })} />
+                        </div>
+                        <div className="field checkbox-field">
+                            <label>Active holat</label>
+                            <input 
+                                type="checkbox" 
+                                checked={form.active} 
+                                onChange={() => setForm({ ...form, active: !form.active })} 
+                            />
                         </div>
                         <button className="save-btn" onClick={save}>Saqlash</button>
                     </div>
