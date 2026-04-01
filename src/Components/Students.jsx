@@ -48,7 +48,6 @@ export default function Students() {
         localStorage.setItem("students_data", JSON.stringify(students));
     }, [students]);
 
-    // Qidiruv mantig'i: Ism, Gmail yoki Guruh bo'yicha
     const filtered = students.filter((s) => {
         const query = search.toLowerCase();
         return (
@@ -122,7 +121,7 @@ export default function Students() {
                                 <span className="name-text">{s.name}</span>
                             </div>
                             <div className="gmail-cell">
-                                <span className="cell-text">{s.gmail || "—"}</span>
+                                <span className="cell-text">{s.gmail || ""}</span>
                             </div>
                             <div className="group-cell">
                                 <span className="badge">{s.group}</span>
@@ -153,24 +152,18 @@ export default function Students() {
                         </div>
                         <div className="field">
                             <label>Ism</label>
-                            <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                            <input value={form.name} placeholder="Ism familya" onChange={(e) => setForm({ ...form, name: e.target.value })} />
                         </div>
                         <div className="field">
                             <label>Gmail</label>
-                            <input value={form.gmail} onChange={(e) => setForm({ ...form, gmail: e.target.value })} />
+                            
+                            <input value={form.gmail} placeholder="gmail" onChange={(e) => setForm({ ...form, gmail: e.target.value })} />
                         </div>
                         <div className="field">
                             <label>Guruh</label>
-                            <input value={form.group} onChange={(e) => setForm({ ...form, group: e.target.value })} />
+                            <input value={form.group} placeholder="Group" onChange={(e) => setForm({ ...form, group: e.target.value })} />
                         </div>
-                        <div className="field checkbox-field">
-                            <label>Active holat</label>
-                            <input 
-                                type="checkbox" 
-                                checked={form.active} 
-                                onChange={() => setForm({ ...form, active: !form.active })} 
-                            />
-                        </div>
+                        
                         <button className="save-btn" onClick={save}>Saqlash</button>
                     </div>
                 </div>
