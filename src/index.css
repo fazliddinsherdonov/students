@@ -1,140 +1,44 @@
-/* Oldingi barcha index.css kodini quyidagiga almashtiring */
+/* Students.css */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
 
-/* === ASOSIY SOZLAMALAR (DESKTOP UCHUN) === */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.students { font-family: 'Sora', sans-serif; min-height: 100vh; background: #0f0f13; padding: 40px; color: #e8e8f0; }
+.top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.top h2 { font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #a78bfa, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.add-btn { display: flex; align-items: center; gap: 8px; padding: 12px 22px; background: linear-gradient(135deg, #7c3aed, #3b82f6); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.add-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124, 58, 237, 0.4); }
+.search-bar { position: relative; margin-bottom: 28px; }
+.search-bar svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #6b7280; }
+.search-bar input { width: 100%; max-width: 360px; padding: 12px 16px 12px 44px; background: #1a1a24; border: 1px solid #2a2a38; border-radius: 12px; color: #e8e8f0; outline: none; }
+.table-wrap { background: #1a1a24; border: 1px solid #2a2a38; border-radius: 16px; overflow: hidden; }
+.table-head, .table-row { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr 0.8fr 100px; padding: 16px 24px; align-items: center; }
+.table-head { background: #141420; border-bottom: 1px solid #2a2a38; }
+.table-head span { font-size: 11px; font-weight: 600; text-transform: uppercase; color: #6b7280; }
+.table-row { border-bottom: 1px solid #1f1f2e; transition: 0.15s; }
+.table-row:hover { background: #1f1f2e; }
+.name-cell { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
+.badge { padding: 4px 10px; background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 6px; font-size: 12px; color: #a78bfa; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-.web-app-layout { display: flex; min-height: 100vh; background: #f1f5f9; }
-
-/* === SIDEBAR (DESKTOP) === */
-.app-sidebar {
-  width: 280px;
-  background: white;
-  padding: 30px 20px;
-  border-right: 1px solid #e2e8f0;
+.status-dot { 
+    font-size: 13px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    padding: 2px 8px; 
+    border-radius: 4px; 
+    transition: 0.2s;
 }
-.brand-logo { font-size: 24px; font-weight: 800; color: #1e293b; margin-bottom: 50px; text-align: center; }
-.nav-item { display: flex; align-items: center; gap: 12px; padding: 12px; color: #94a3b8; text-decoration: none; border-radius: 8px; font-weight: 500; transition: 0.3s; }
-.nav-item.active { background: #38bdf8; color: white; }
-.nav-item:hover:not(.active) { color: #1e293b; background: #f1f5f9; }
+.status-dot.active { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+.status-dot.inactive { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
 
-/* === MAIN VIEWPORT (DESKTOP) === */
-.main-viewport { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
-
-/* === TOP BAR (DESKTOP) === */
-.top-bar {
-  height: 80px;
-  background: white;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e2e8f0;
-}
-.search-wrapper { background: #f8fafc; padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 10px; width: 350px; }
-.search-wrapper input { border: none; background: transparent; outline: none; font-size: 14px; width: 100%; }
-
-.admin-profile { display: flex; align-items: center; gap: 20px; }
-.avatar-circle { width: 45px; height: 45px; background: #f1f5f9; border-radius: 50%; color: #94a3b8; font-weight: 600; font-size: 13px; display: flex; align-items: center; justify-content: center; }
-
-/* === CONTENT BODY (DESKTOP) === */
-.content-body { padding: 40px; flex: 1; }
-
-.data-panel { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
-
-/* === PANEL HEADER (DESKTOP - Rasmda buzilgan qism) === */
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-.panel-header h2 { font-size: 28px; font-weight: 700; color: #1e293b; }
-
-.add-btn {
-  background: #1e293b;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  white-space: nowrap; /* Matn sinib ketmasligi uchun */
-}
-
-/* === TABLE STYLE (DESKTOP) === */
-.modern-table { width: 100%; border-collapse: collapse; }
-.modern-table th { text-align: left; padding: 15px; font-size: 13px; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #f1f5f9; }
-.modern-table td { padding: 20px 15px; font-size: 15px; color: #1e293b; border-bottom: 1px solid #f1f5f9; }
-
-.action-flex { display: flex; gap: 10px; }
-.icon-btn { width: 40px; height: 40px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.2s; }
-.edit-btn { background: #e0f2fe; color: #0369a1; }
-.delete-btn { background: #fee2e2; color: #dc2626; }
-
-
-/* ======================================================= */
-/* === RESPONSIVE SOZLAMALAR (RESPONSIVITY HUNUK BO'LSA) === */
-/* ======================================================= */
-
-@media (max-width: 1024px) {
-  /* Sidebar Planshetda ixchamroq */
-  .app-sidebar { width: 100px; padding: 20px 10px; }
-  .brand-logo, .nav-item span { display: none; }
-  .nav-item { justify-content: center; }
-  .top-bar, .content-body { padding: 0 20px; }
-}
-
-@media (max-width: 768px) {
-  .web-app-layout { flex-direction: column; } /* Mobilda sidebar tepada */
-
-  /* Sidebar Mobilda yuqori paneli */
-  .app-sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 10px 20px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-  }
-  .nav-item { display: none; } /* Mobilda yashiramiz */
-
-  /* Main Port Mobilda to'liq o'rin */
-  .main-viewport { width: 100%; }
-
-  /* Top Bar Mobilda responsiv */
-  .top-bar { height: auto; flex-direction: column; padding: 15px; gap: 10px; }
-  .search-wrapper { width: 100%; order: 2; }
-  .admin-profile { width: 100%; justify-content: flex-end; order: 1; }
-
-  /* Content Body Mobilda kamroq joy */
-  .content-body { padding: 20px; }
-  .data-panel { padding: 20px; }
-
-  /* === PANEL HEADER MOBILDA (TUZATISH) === */
-  .panel-header {
-    flex-direction: column; /* Sarlavha va tugma ustma-ust */
-    align-items: flex-start;
-    gap: 15px;
-  }
-  .panel-header h2 { font-size: 22px; } /* Sarlavha kichikroq */
-  .add-btn { width: 100%; justify-content: center; } /* Tugma to'liq eni */
-
-  /* === JADVAL MOBILDA (RESPONSIV) === */
-  .table-wrapper {
-    overflow-x: auto; /* Sig'masa, gorizontal scroll */
-    -webkit-overflow-scrolling: touch; /* Silliq scroll */
-  }
-  .modern-table { min-width: 600px; } /* Jadval qisilib ketmasligi uchun */
-}
-
-@media (max-width: 480px) {
-  .top-bar { padding: 10px; }
-  .panel-header h2 { font-size: 20px; }
-  .modern-table td { padding: 15px 10px; font-size: 14px; }
-}
+.actions { display: flex; gap: 8px; justify-content: flex-end; }
+.icon-btn { width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.edit { background: rgba(59,130,246,0.1); color: #60a5fa; }
+.del { background: rgba(239,68,68,0.1); color: #f87171; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal-box { background: #1a1a24; border: 1px solid #2a2a38; border-radius: 20px; padding: 28px; width: 400px; }
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 24px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 11px; color: #6b7280; margin-bottom: 8px; text-transform: uppercase; }
+.field input { width: 100%; padding: 12px; background: #0f0f13; border: 1px solid #2a2a38; border-radius: 10px; color: white; outline: none; }
+.save-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #7c3aed, #3b82f6); border: none; border-radius: 10px; color: white; font-weight: 600; cursor: pointer; }
