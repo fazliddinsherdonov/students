@@ -127,9 +127,7 @@ export default function Students() {
                                 <span className="badge">{s.group}</span>
                             </div>
                             <div className="active-cell">
-                                <span 
-                                    className={`status-dot ${s.active ? "active" : "inactive"}`}
-            
+                                <span
                                 >
                                     {s.active ? "Active" : ""}
                                 </span>
