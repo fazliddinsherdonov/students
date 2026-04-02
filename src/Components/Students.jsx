@@ -129,9 +129,9 @@ export default function Students() {
                             <div className="active-cell">
                                 <span 
                                     className={`status-dot ${s.active ? "active" : "inactive"}`}
-                                    onClick={() => toggleActive(s.id)}
+            
                                 >
-                                    {s.active ? "Active" : "Inactive"}
+                                    {s.active ? "Active" : ""}
                                 </span>
                             </div>
                             <div className="actions">
